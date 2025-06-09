@@ -52,3 +52,10 @@ end)
 -- move selected shit around
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+-- LSP
+local opts = { silent = true }
+vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+
+-- git
+vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
