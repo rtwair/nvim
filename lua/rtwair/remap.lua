@@ -48,3 +48,7 @@ end)
 vim.keymap.set("n", "<leader>gr", function()
     vim.fn.chansend(job_id, {"echo 'hi'\r\n"})
 end)
+
+-- move selected shit around
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")

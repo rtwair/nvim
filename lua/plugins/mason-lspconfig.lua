@@ -9,4 +9,8 @@ return {
         "hrsh7th/nvim-cmp",
         { 'j-hui/fidget.nvim', opts = {} },
     },
+    config = function()
+        require("mason").setup()
+        require("mason-lspconfig").setup()
+    end
 }
