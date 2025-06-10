@@ -42,3 +42,4 @@ vim.opt.guifont = "monospace:h17"
 
 -- lsp diagnostics where they belong!!!
 vim.diagnostic.config({ virtual_text = true })
+vim.diagnostic.config({ float = { border = "rounded" } })
