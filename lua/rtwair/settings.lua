@@ -21,11 +21,11 @@ vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
 -- tokyonight colorscheme
-vim.cmd.colorscheme("tokyonight-night")
+vim.cmd.colorscheme("tokyonight")
 
 -- transparency
--- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
--- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+--  vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+--  vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 
 -- to make the current line number pop
 vim.opt.cursorline = true
@@ -44,5 +44,20 @@ vim.opt.guifont = "monospace:h17"
 vim.diagnostic.config({ virtual_text = true })
 vim.diagnostic.config({ float = { border = "rounded" } })
 
--- os clipboard integration
-vim.opt.clipboard = "unnamedplus" -- use system clipboard
+-- Enable OSC 52 clipboard over SSH
+if os.getenv("SSH_CONNECTION") then
+    vim.g.clipboard = {
+        name = 'OSC 52',
+        copy = {
+            ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
+            ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+        },
+        paste = {
+            ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
+            ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
+        },
+    }
+end
+
+-- Use system clipboard
+vim.opt.clipboard = "unnamedplus"
