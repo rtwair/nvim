@@ -1,5 +1,5 @@
 -- leader is space
-vim.g.mapleader  = " "
+vim.g.mapleader = " "
 
 -- open netrw
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
@@ -46,7 +46,7 @@ end)
 -- Terminal
 
 vim.keymap.set("n", "<leader>gr", function()
-    vim.fn.chansend(job_id, {"echo 'hi'\r\n"})
+    vim.fn.chansend(job_id, { "echo 'hi'\r\n" })
 end)
 
 -- move selected shit around
@@ -56,6 +56,7 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 -- LSP
 local opts = { silent = true }
 vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
 
 -- git
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
